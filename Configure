@@ -1209,7 +1209,8 @@ if ($target =~ /^mingw/ && `$cc --target-help 2>&1` !~ m/\-mno\-cygwin/m)
 
 if ($target =~ /linux.*\-mips/ && !$no_asm && $flags !~ /\-m(ips|arch=)/) {
 	# minimally required architecture flags for assembly modules
-	$cflags="-mips32r2 $cflags" if ($target =~ /mips32/);
+	$cflags="-mips2 $cflags" if ($target =~ /mips32/);
+	$cflags="-mips32r2 $cflags" if ($target =~ /mipsel32/);
 	$cflags="-mips3 $cflags" if ($target =~ /mips64/);
 }
 
